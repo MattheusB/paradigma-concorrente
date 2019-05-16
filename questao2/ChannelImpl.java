@@ -28,6 +28,24 @@ public class ChannelImpl<T> implements Channel<T> {
         }
     }
 
+    @Override
+    public String takeMessage(){
+        synchronized (this.messages){
+            while (this.messages.size() == 0){
+                try {
+                    this.messages.wait();
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+            T output = this.messages.get(0);
+            this.messages.remove(output);
+            this.messages.notifyAll();
+            return output;
+
+        }
+    }
+
 
 
 
