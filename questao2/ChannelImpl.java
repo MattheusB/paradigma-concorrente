@@ -1,26 +1,17 @@
 package questao2;
 
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.Condition;
 
 
 
 public class ChannelImpl implements Channel {
     private ArrayList<String> messages;
     private int capacity;
-    private Lock lock;
-    private Condition empty;
-    private Condition full;
 
 
     public ChannelImpl(int capacity){
         this.messages = new ArrayList<>();
         this.capacity = capacity;
-        this.lock = new ReentrantLock();
-        this.empty = lock.newCondition();
-        this.full = lock.newCondition();
 
     }
 
@@ -50,7 +41,7 @@ public class ChannelImpl implements Channel {
                     e.printStackTrace();
                 }
             }
-            T output = this.messages.get(0);
+            String output = this.messages.get(0);
             this.messages.remove(output);
             this.messages.notifyAll();
             return output;
