@@ -8,9 +8,9 @@ public class ListComparator implements Runnable{
 
 	private int size;
 	
-    public ListComparator(int numberThreads){
+    public ListComparator(int threadsNumber){
     	
-        this.size = 150000/numberThreads;
+        this.size = 150000/threadsNumber;
     	
     	
     }
@@ -24,14 +24,14 @@ public class ListComparator implements Runnable{
 	
 	private long putCopyOnWriteArrayList () {
 		
-		CopyOnWriteArrayList<Integer> copyList = new CopyOnWriteArrayList<>();
+		List<Integer> copyList = new CopyOnWriteArrayList<>();
 		
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
 		startTime = System.currentTimeMillis();
-		testPut(copyList);
+		copyList = putTest(copyList);
 		endTime = System.currentTimeMillis();
 		realTime = endTime - startTime;
 		
@@ -41,13 +41,13 @@ public class ListComparator implements Runnable{
 	}
 	
 	private long putSychronizedList() {
-		ArrayList<Integer> synchList = new ArrayList<>();
+		List<Integer> synchList = new ArrayList<>();
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
 		startTime = System.currentTimeMillis();
-		testPut(synchList);
+		synchList = putTest(synchList);
 		endTime = System.currentTimeMillis();
 		realTime = endTime - startTime;
 		
@@ -55,24 +55,26 @@ public class ListComparator implements Runnable{
 		
 	}
 	
-	private void testPut(List auxList) {
+	private List<Integer> putTest(List<Integer> auxList) {
 		for (int i = 0; i < this.size; i++) {
 			auxList.add(i);
 		}
+		
+		return auxList;
 	}
 	
 	
 	private long getCopyOnWriteArrayList() {
 		
-		CopyOnWriteArrayList<Integer> copyList = new CopyOnWriteArrayList<>();
+		List<Integer> copyList = new CopyOnWriteArrayList<>();
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
-		testPut(copyList);
+		copyList = putTest(copyList);
 		
 		startTime = System.currentTimeMillis();
-		testGet(copyList);
+		copyList = getTest(copyList);
 		endTime = System.currentTimeMillis();
 		realTime = endTime - startTime;
 		
@@ -81,41 +83,43 @@ public class ListComparator implements Runnable{
 	}
 	
 	private long getSynchronizedList() {
-		ArrayList<Integer> synchList = new ArrayList<>();
+		List<Integer> synchList = new ArrayList<>();
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
-		testPut(synchList);
+		synchList = putTest(synchList);
 		
 		startTime = System.currentTimeMillis();
-		testGet(synchList);
+		synchList = getTest(synchList);
 		endTime = System.currentTimeMillis();
-		realTime = endTime = startTime;
+		realTime = endTime - startTime;
 		
 		return realTime;
 		
 	}
 	
 	
-	private void testGet(List auxList) {
+	private List<Integer> getTest(List<Integer> auxList) {
 		
 		for (int i = 0; i < this.size; i++) {
 			auxList.get(i);
 		}
+		
+		return auxList;
 	}
 	
 	
 	private long removeCopyOnWriteArrayList() {
-		CopyOnWriteArrayList<Integer> copyList = new CopyOnWriteArrayList<>();
+		List<Integer> copyList = new CopyOnWriteArrayList<>();
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
-		testPut(copyList);
+		copyList = putTest(copyList);
 		
 		startTime = System.currentTimeMillis();
-		testRemove(copyList);
+		copyList = removeTest(copyList);
 		endTime = System.currentTimeMillis();
 		realTime = endTime - startTime;
 		
@@ -123,15 +127,15 @@ public class ListComparator implements Runnable{
 	}
 	
 	private long removeSynchronizedList() {
-		ArrayList<Integer> synchList = new ArrayList<>();
+		List<Integer> synchList = new ArrayList<>();
 		long startTime = 0;
 		long endTime = 0;
 		long realTime = 0;
 		
-		testPut(synchList);
+		synchList = putTest(synchList);
 		
 		startTime = System.currentTimeMillis();
-		testRemove(synchList);
+		synchList = removeTest(synchList);
 		endTime = System.currentTimeMillis();
 		realTime = endTime - startTime;
 		
@@ -140,10 +144,12 @@ public class ListComparator implements Runnable{
 	}
 	
 	
-	private void testRemove(List auxList) {
+	private List<Integer> removeTest(List<Integer> auxList) {
 		for (int i = 0; i < this.size; i ++) {
 			auxList.remove(0);
 		}
+		
+		return auxList;
 	}
 	
 
