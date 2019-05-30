@@ -17,7 +17,20 @@ public class ListComparator implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		System.out.println("Time of PUT CopyOnWriteArrayList: " + putCopyOnWriteArrayList());
+		System.out.println("Time of PUT SynchronizedList: " + putSychronizedList());
+		
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("Time of GET CopyOnWriteArrayList: " + getCopyOnWriteArrayList());
+		System.out.println("Time of GET SynchronizedList: " + getSynchronizedList());
+		
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("Time of REMOVE CopyOnWriteArrayList: " + removeCopyOnWriteArrayList());
+		System.out.println("Time of REMOVE SynchronizedList: "  + removeSynchronizedList());
+		
+		System.out.println("-----------------------------------------");
 		
 	}
 	

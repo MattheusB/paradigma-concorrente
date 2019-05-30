@@ -17,7 +17,20 @@ public class MapComparator implements Runnable{
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		System.out.println("Time of PUT ConcurrentHashMap: " + putConcurrentHashMap());
+		System.out.println("Time of PUT SynchronizedMap: " + putSynchronizedMap());
+		
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("Time of GET ConcurrentHashMap: " + getConcurrentHashMap());
+		System.out.println("Time of GET SynchronizedMap: " + getSynchronizedMap());
+		
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("Time of REMOVE ConcurrentHashMap: " + removeConcurrentHashMap());
+		System.out.println("Time of REMOVE SynchronizedMap: " + removeSynchronizedMap());
+		
+		System.out.println("-----------------------------------------");
 		
 	}
 	
@@ -36,7 +49,7 @@ public class MapComparator implements Runnable{
 		
 	}
 	
-	private long putSynchronizedHashMap() {
+	private long putSynchronizedMap() {
 		Map<String, Integer> synchMap = new HashMap<>();
 		long startTime = 0;
 		long endTime = 0;
@@ -77,7 +90,7 @@ public class MapComparator implements Runnable{
 		return realTime;
 	}
 	
-	private long getSynchronizedHashMap() {
+	private long getSynchronizedMap() {
 		Map<String, Integer> synchMap = new HashMap<>();
 		long startTime = 0;
 		long endTime = 0;
@@ -123,7 +136,7 @@ public class MapComparator implements Runnable{
 	}
 	
 	
-	private long removeSynchronizedHashMap() {
+	private long removeSynchronizedMap() {
 		Map<String, Integer> synchMap = new HashMap<>();
 		long startTime = 0;
 		long endTime = 0;

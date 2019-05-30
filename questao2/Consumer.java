@@ -15,6 +15,10 @@ public class Consumer implements Runnable {
         for (int i = 0; i < 9; i++){
             System.err.println("Read Message: " + channel.takeMessage());
         }
+        
+        for (int i = 0; i < 3; i++){
+            System.err.println("Read Message: " + channel.takeMessage());
+        }
     }
 
 }
