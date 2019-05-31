@@ -1,7 +1,7 @@
 
 PARA O PROGRAMA SEM AS THREADS:
 
-$ perf stat ./semThreads
+$ perf stat ./semLOCKS
 
 my_id=1 j=10000000 counter=14281652
 my_id=0 j=10000000 counter=15617340
@@ -25,7 +25,7 @@ counter = 17319876
 
 PARA O PROGRAMA COM AS THREADS
 
-$ perf stat ./comThreads
+$ perf stat ./comLOCKS
 
 my_id=0 j=10000000 counter=10000000
 my_id=2 j=10000000 counter=20000000
