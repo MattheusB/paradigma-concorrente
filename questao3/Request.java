@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Request  Request implements Runnable{
+public class Request implements Runnable{
 	
 	private Random gerador;
 	private int id;
@@ -29,7 +29,7 @@ public class Request  Request implements Runnable{
 		int numThread = request();
 	}
 	
-	public int getNum() {
+	public synchronized int getNum() {
 		return this.randomNumber;
 	}
 
