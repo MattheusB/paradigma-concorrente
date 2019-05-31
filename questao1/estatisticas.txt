@@ -1,0 +1,46 @@
+
+PARA O PROGRAMA SEM AS THREADS:
+
+$ perf stat ./semThreads
+
+my_id=1 j=10000000 counter=14281652
+my_id=0 j=10000000 counter=15617340
+my_id=2 j=10000000 counter=17319876
+counter = 17319876
+
+ Performance counter stats for './semThreads':
+
+        175,143434      task-clock (msec)         #    1,442 CPUs utilized          
+                99      context-switches          #    0,565 K/sec                  
+                 3      cpu-migrations            #    0,017 K/sec                  
+                77      page-faults               #    0,440 K/sec                  
+       471.972.904      cycles                    #    2,695 GHz                    
+       243.116.021      instructions              #    0,52  insn per cycle         
+        30.636.927      branches                  #  174,925 M/sec                  
+            28.861      branch-misses             #    0,09% of all branches        
+
+       0,121489641 seconds time elapsed
+       
+------------------------------------------------------------------------------------
+
+PARA O PROGRAMA COM AS THREADS
+
+$ perf stat ./comThreads
+
+my_id=0 j=10000000 counter=10000000
+my_id=2 j=10000000 counter=20000000
+my_id=1 j=10000000 counter=30000000
+counter = 30000000
+
+ Performance counter stats for './comThreads':
+
+         76,091883      task-clock (msec)         #    0,949 CPUs utilized          
+                25      context-switches          #    0,329 K/sec                  
+                 4      cpu-migrations            #    0,053 K/sec                  
+                78      page-faults               #    0,001 M/sec                  
+       185.652.373      cycles                    #    2,440 GHz                    
+       242.622.284      instructions              #    1,31  insn per cycle         
+        30.547.297      branches                  #  401,453 M/sec                  
+            20.665      branch-misses             #    0,07% of all branches        
+
+       0,080162291 seconds time elapsed
