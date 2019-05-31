@@ -17,20 +17,19 @@ public class MapComparator implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println("Time of PUT ConcurrentHashMap: " + putConcurrentHashMap());
-		System.out.println("Time of PUT SynchronizedMap: " + putSynchronizedMap());
-		
-		System.out.println("-----------------------------------------");
-		
-		System.out.println("Time of GET ConcurrentHashMap: " + getConcurrentHashMap());
-		System.out.println("Time of GET SynchronizedMap: " + getSynchronizedMap());
-		
-		System.out.println("-----------------------------------------");
-		
-		System.out.println("Time of REMOVE ConcurrentHashMap: " + removeConcurrentHashMap());
-		System.out.println("Time of REMOVE SynchronizedMap: " + removeSynchronizedMap());
-		
-		System.out.println("-----------------------------------------");
+//		System.out.println("Time of PUT ConcurrentHashMap: " + putConcurrentHashMap());
+//		System.out.println("Time of PUT SynchronizedMap: " + putSynchronizedMap());	
+//		System.out.println("-----------------------------------------");
+//		
+//		System.out.println("Time of GET ConcurrentHashMap: " + getConcurrentHashMap());
+//		System.out.println("Time of GET SynchronizedMap: " + getSynchronizedMap());
+//		
+//		System.out.println("-----------------------------------------");
+//		
+//		System.out.println("Time of REMOVE ConcurrentHashMap: " + removeConcurrentHashMap());
+//		System.out.println("Time of REMOVE SynchronizedMap: " + removeSynchronizedMap());
+//		
+//		System.out.println("-----------------------------------------");
 		
 	}
 	
