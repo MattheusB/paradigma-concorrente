@@ -6,18 +6,18 @@
 
 int superValue = -1;
 pthread_mutex_t mutex;
-pthread_cond_t cond;
+pthread_cond_t cheio,vazio;
 
 int request(void *args){
 
     int myId = (int) args;
-    int value = (1+rand() % 30);
+    int value = (rand() % 30);
     sleep(value);
     
     pthread_mutex_lock(&mutex);
-    while(superValue != -1) pthread_cond_wait(&cond,&mutex);
+    while (superValue != -1) {pthread_cond_wait(&cheio,&mutex);}
     superValue = value;
-    pthread_cond_signal(&cond);
+    pthread_cond_signal(&vazio);
     printf("myId = %d, value = %d\n", myId, value);
     pthread_mutex_unlock(&mutex);
 
@@ -28,21 +28,30 @@ int request(void *args){
 int gateway(int numreplicas){
     pthread_t pthreads[numreplicas];
     int i;
+    int value = 0;
 
     pthread_mutex_lock(&mutex);
     for (i = 0; i < numreplicas; i++){
         pthread_create(&pthreads[i], NULL, &request, (void*) i);
     }
-
-    while(superValue == -1) pthread_cond_wait(&cond,&mutex);
     pthread_mutex_unlock(&mutex);
-    return superValue;
+    
+    for (i = 0; i < numreplicas; i++){
+        pthread_mutex_lock(&mutex);
+        while(superValue == -1) pthread_cond_wait(&vazio,&mutex);
+        value = value + superValue;
+        superValue = -1;
+        pthread_cond_signal(&cheio);
+        pthread_mutex_unlock(&mutex);
+    }
+    return value;
 }
 
 int main(int argc, char *args[]){
 
     pthread_mutex_init(&mutex, NULL);
-    pthread_cond_init(&cond,NULL);
+    pthread_cond_init(&cheio,NULL);
+    pthread_cond_init(&vazio,NULL);
 
     struct timespec tv;
     gettimeofday(&tv, NULL);
@@ -50,5 +59,5 @@ int main(int argc, char *args[]){
     int n;
     printf("Digite o numero de threads: ");
     scanf("%d", &n);
-    printf("superValue = %d\n", gateway(n));
+    printf("Soma = %d\n", gateway(n));
 }
