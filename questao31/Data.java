@@ -1,3 +1,4 @@
+package questao31;
 
 public class Data {
 	private int value;
@@ -8,10 +9,11 @@ public class Data {
 	
 	public void put(int value) {
 		if (value < 0) {
-			throws new IllegalArgumentException(
+			throw new IllegalArgumentException(
 					"Nao pode adicionar valores negativos");
 		}
 		this.value = value;
+		System.out.println("Primeiro Valor: " + value);
 	}
 	
 	public int take() {

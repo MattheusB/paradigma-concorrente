@@ -1,18 +1,18 @@
+package questao31;
 import java.util.Random;
 
 
-public class Request implements Runnable{
+public class Producer implements Runnable{
 	
 	private Random gerador;
 	private int id;
 	private int randomNumber;
 	private Data data;
 	
-	public Request(int id) {
+	public Producer(Data data) {
 		this.gerador = new Random();
-		this.id = id;
 		this.randomNumber = 0;
-		this.data = New Data();
+		this.data = data;
 	}
 	
 	public synchronized int request() {
@@ -23,8 +23,8 @@ public class Request implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		this.data.put(randomNumber)
-		this.data.notifyAll();
+		System.out.println("Primeira a acabar: " + this.randomNumber);
+		this.data.put(randomNumber);
 		 notify();
 		return this.randomNumber;
 	}
