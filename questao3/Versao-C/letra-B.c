@@ -11,7 +11,7 @@ pthread_cond_t cheio,vazio;
 int request(void *args){
 
     int myId = (int) args;
-    int value = (rand() % 30);
+    int value = (1+rand() % 30);
     sleep(value);
     
     pthread_mutex_lock(&mutex);
@@ -34,10 +34,8 @@ int gateway(int numreplicas){
     for (i = 0; i < numreplicas; i++){
         pthread_create(&pthreads[i], NULL, &request, (void*) i);
     }
-    pthread_mutex_unlock(&mutex);
     
     for (i = 0; i < numreplicas; i++){
-        pthread_mutex_lock(&mutex);
         while(superValue == -1) pthread_cond_wait(&vazio,&mutex);
         value = value + superValue;
         superValue = -1;
