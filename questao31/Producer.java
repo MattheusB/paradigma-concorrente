@@ -5,7 +5,6 @@ import java.util.Random;
 public class Producer implements Runnable{
 	
 	private Random gerador;
-	private int id;
 	private int randomNumber;
 	private Data data;
 	
@@ -19,23 +18,30 @@ public class Producer implements Runnable{
 		this.randomNumber = gerador.nextInt(31);
 		try {
 			Thread.sleep(this.randomNumber);
-		
+			System.out.println("Random num: " + randomNumber);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Primeira a acabar: " + this.randomNumber);
-		this.data.put(randomNumber);
-		 notify();
+		this.data.put(this.randomNumber);
 		return this.randomNumber;
 	}
 
 	@Override
 	public void run() {
-		int numThread = request();
-	}
-	
-	public synchronized int getNum() {
-		return this.randomNumber;
+		while (true) {
+			synchronized (this.data) {
+				if (!this.data.isEmpty()) {
+					try {
+						this.data.wait();
+					} catch (InterruptedException ex) {
+						System.err.println(ex.getLocalizedMessage());
+					}
+					
+				}
+				request();
+				this.data.notifyAll();
+			}
+		}
 	}
 
 }

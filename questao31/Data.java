@@ -25,5 +25,9 @@ public class Data {
 	public boolean isEmpty() {
 		return this.value == -1;
 	}
+	
+	public int getValue() {
+		return this.value;
+	}
 
 }

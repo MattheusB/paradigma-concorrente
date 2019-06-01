@@ -1,8 +1,9 @@
 package questao31;
 
-public class Consumer {
+public class Consumer implements Runnable{
 	
 	private Data data;
+	private int firstValue;
 	
 	public Consumer(Data data) {
 		this.data = data;
@@ -11,22 +12,35 @@ public class Consumer {
 			
 		Data data = new Data();
 		Consumer consumer = new Consumer(data);
-		int n_thread = consumer.gateway(3);
-		
-		System.out.println(n_thread);
+		int taken = consumer.gateway(5);
+		System.out.println(taken);
 	}
 	
 	public int gateway(int num_replicas) {
 		for (int i = 0; i < num_replicas; i++) {
-			Producer temp = new Producer(data);
+			Producer temp = new Producer(this.data);
 			Thread thread = new Thread(temp);
 			thread.start();
-			System.out.println("Thread Id: " + thread.getId());
-			this.data.put(temp.getNum());
-			System.out.println("Iteracao: " + i);
 		}
 		return this.data.take();
 	}
-	
+	@Override
+	public void run() {
+		while (true) {
+			
+			synchronized(this.data) {
+				while (this.data.isEmpty()) {
+					try {
+						this.data.wait();
+					} catch (InterruptedException ex) {
+					}
+				}
+				this.firstValue = this.data.take();
+				System.err.println("Primeira Thread foi: " + this.firstValue);
+				this.data.notifyAll();
+			}
+
+		}
+	}	
 	
 }
