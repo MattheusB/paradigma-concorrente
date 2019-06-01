@@ -1,0 +1,12 @@
+---
+title: "Anaálise Tempos Questão 05"
+output: html_notebook
+---
+
+```{r}
+
+```
+
+
+
+
