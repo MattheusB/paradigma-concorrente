@@ -1,4 +1,4 @@
-package questao31;
+package questao3A;
 import java.util.Random;
 
 
@@ -14,15 +14,18 @@ public class Producer implements Runnable{
 		this.data = data;
 	}
 	
-	public synchronized int request() {
-		this.randomNumber = gerador.nextInt(31);
-		try {
-			Thread.sleep(this.randomNumber);
-			System.out.println("Random num: " + randomNumber);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public int request() {
+		synchronized (this.data) {
+			this.randomNumber = gerador.nextInt(31);
+			try {
+				Thread.sleep(this.randomNumber);
+				System.out.println("Random num: " + randomNumber);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			this.data.put(this.randomNumber);
+			this.data.notifyAll();
 		}
-		this.data.put(this.randomNumber);
 		return this.randomNumber;
 	}
 

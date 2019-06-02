@@ -1,4 +1,4 @@
-package questao31;
+package questao3A;
 
 public class Main {
 

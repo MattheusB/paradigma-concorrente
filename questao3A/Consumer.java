@@ -1,4 +1,4 @@
-package questao31;
+package questao3A;
 
 public class Consumer implements Runnable{
 	
@@ -12,17 +12,30 @@ public class Consumer implements Runnable{
 			
 		Data data = new Data();
 		Consumer consumer = new Consumer(data);
-		int taken = consumer.gateway(5);
+		int taken = consumer.gateway(2);
 		System.out.println(taken);
+		
+		
+		
 	}
 	
 	public int gateway(int num_replicas) {
-		for (int i = 0; i < num_replicas; i++) {
-			Producer temp = new Producer(this.data);
-			Thread thread = new Thread(temp);
-			thread.start();
+		synchronized (this.data) {
+			Thread thread = null;
+			for (int i = 0; i < num_replicas; i++) {
+				Producer temp = new Producer(this.data);
+				thread = new Thread(temp);
+				thread.start();
 		}
-		return this.data.take();
+			this.data.notifyAll();
+			try {
+				this.data.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return this.data.getValue();
 	}
 	@Override
 	public void run() {
