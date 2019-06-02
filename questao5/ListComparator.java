@@ -10,20 +10,20 @@ public class ListComparator implements Runnable{
 	
     public ListComparator(int threadsNumber){
     	
-        this.size = 150000/threadsNumber;
+        this.size = threadsNumber;
     	
     	
     }
 
 	@Override
 	public void run() {
-//		System.out.println("Time of PUT CopyOnWriteArrayList: " + putCopyOnWriteArrayList());
+		System.out.println("Time of PUT CopyOnWriteArrayList: " + putCopyOnWriteArrayList());
 //		System.out.println("Time of PUT SynchronizedList: " + putSychronizedList());
 		
 //		System.out.println("-----------------------------------------");
 //		
 //		System.out.println("Time of GET CopyOnWriteArrayList: " + getCopyOnWriteArrayList());
-		System.out.println("Time of GET SynchronizedList: " + getSynchronizedList());
+//		System.out.println("Time of GET SynchronizedList: " + getSynchronizedList());
 //		
 //		System.out.println("-----------------------------------------");
 //		

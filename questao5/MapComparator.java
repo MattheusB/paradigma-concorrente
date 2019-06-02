@@ -12,7 +12,7 @@ public class MapComparator implements Runnable{
 	
 	
 	public MapComparator(int threadsNumber) {
-		this.size = 150000/threadsNumber;
+		this.size = threadsNumber;
 	}
 	
 	@Override
