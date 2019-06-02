@@ -1,9 +1,9 @@
-package questao3A;
+package questao3B;
 
 public class Consumer implements Runnable{
 	
 	private Data data;
-	private int firstValue;
+	private int sum;
 	
 	public Consumer(Data data) {
 		this.data = data;
@@ -13,7 +13,7 @@ public class Consumer implements Runnable{
 		Data data = new Data();
 		Consumer consumer = new Consumer(data);
 		int result = consumer.gateway(2);
-		System.out.println(result);
+		System.out.println("A soma eh: " + result);
 		
 		
 		
@@ -26,30 +26,27 @@ public class Consumer implements Runnable{
 				Producer temp = new Producer(this.data);
 				thread = new Thread(temp);
 				thread.start();
-		}
-			this.data.notifyAll();
-			try {
-				this.data.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Iteracao: " + i);
 			}
+			run();
 		}
-		return this.data.getValue();
+		return sum;
 	}
 	@Override
 	public void run() {
 		while (true) {
-			
+			System.out.println("Aqui");
 			synchronized(this.data) {
 				while (this.data.isEmpty()) {
+					System.out.println("Waiting");
 					try {
 						this.data.wait();
 					} catch (InterruptedException ex) {
 					}
 				}
-				this.firstValue = this.data.take();
-				System.err.println("Primeira Thread foi: " + this.firstValue);
+				System.out.println("Acordou?");
+				this.sum += this.data.take();
+				System.err.println("Thread: " + Thread.currentThread().getName() + " Valor da soma: " + this.sum);
 				this.data.notifyAll();
 			}
 
