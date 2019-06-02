@@ -12,11 +12,7 @@ public class Main {
 
 
 
-//		for (int i = 0; i < threadsNumber; i++) {
-//			MapComparator mapComparator = new MapComparator(threadsNumber);
-//			Thread thread = new Thread(mapComparator, "thread" + i);
-//			thread.start();
-//		}
+
 
 		try {
 			PrintStream out = new PrintStream(new File("questao5.txt"));
@@ -30,6 +26,12 @@ public class Main {
 			Thread thread = new Thread(listComparator, "thread" + i);
 			thread.start();
 		}
+		
+//		for (int i = 0; i < threadsNumber; i++) {
+//		MapComparator mapComparator = new MapComparator(threadsNumber);
+//		Thread thread = new Thread(mapComparator, "thread" + i);
+//		thread.start();
+//	}
 		
 
 	}
