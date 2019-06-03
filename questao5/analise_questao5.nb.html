@@ -178,11 +178,58 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeShwbG90bHkpXG5gYGAifQ== -->
+<pre class="r"><code>library(ggplot2)
+library(plotly)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYcGxvdGx54oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6Z2dwbG90MuKAmTpcblxuICAgIGxhc3RfcGxvdFxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6Z3JhcGhpY3PigJk6XG5cbiAgICBsYXlvdXRcbiJ9 -->
+<pre><code>
+Attaching package: ‘plotly’
+
+The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following object is masked from ‘package:graphics’:
+
+    layout</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGVtcG9zTGlzdCA8LSByZWFkLmNzdihcIi9Vc2Vycy9tYXR0aGV1c2JyaXRvL2dpdC9wYXJhZGlnbWEtY29uY29ycmVudGUvcXVlc3RhbzUvdGVtcG9zX2xpc3QuY3N2XCIpXG50ZW1wb3NNYXAgPC0gcmVhZC5jc3YoXCIvVXNlcnMvbWF0dGhldXNicml0by9naXQvcGFyYWRpZ21hLWNvbmNvcnJlbnRlL3F1ZXN0YW81L3RlbXBvc19tYXAuY3N2XCIpXG5tZWRpYXNMaXN0IDwtIHJlYWQuY3N2KFwiL1VzZXJzL21hdHRoZXVzYnJpdG8vZ2l0L3BhcmFkaWdtYS1jb25jb3JyZW50ZS9xdWVzdGFvNS9tZWRpYXNfbGlzdC5jc3ZcIilcbm1lZGlhc01hcCA8LSByZWFkLmNzdihcIi9Vc2Vycy9tYXR0aGV1c2JyaXRvL2dpdC9wYXJhZGlnbWEtY29uY29ycmVudGUvcXVlc3RhbzUvbWVkaWFzX21hcC5jc3ZcIilcbmBgYCJ9 -->
+<pre class="r"><code>temposList &lt;- read.csv(&quot;/Users/mattheusbrito/git/paradigma-concorrente/questao5/tempos_list.csv&quot;)
+temposMap &lt;- read.csv(&quot;/Users/mattheusbrito/git/paradigma-concorrente/questao5/tempos_map.csv&quot;)
+mediasList &lt;- read.csv(&quot;/Users/mattheusbrito/git/paradigma-concorrente/questao5/medias_list.csv&quot;)
+mediasMap &lt;- read.csv(&quot;/Users/mattheusbrito/git/paradigma-concorrente/questao5/medias_map.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5hbGlzZVRlbXBvTGlzdCA8LSB0ZW1wb3NMaXN0ICU+JVxuICBncm91cF9ieSh0aHJlYWRzKVxuYW5hbGlzZVRlbXBvTGlzdCA8LSBhbmFsaXNlVGVtcG9MaXN0W29yZGVyKGFuYWxpc2VUZW1wb0xpc3QkcHV0X3N5bmNoLCBkZWNyZWFzaW5nID0gRkFMU0UpXVxuYW5hbGlzZVRlbXBvTGlzdCRpbmRleFRocmVhZHMgPC0gZmFjdG9yKGFuYWxpc2VUZW1wb0xpc3QkdGhyZWFkcywgbGV2ZWxzID0gYW5hbGlzZVRlbXBvTGlzdCR0aHJlYWRzKVxuYW5hbGlzZVRlbXBvTGlzdCAlPiVcbiAgcGxvdF9seSh4PSB+aW5kZXhUaHJlYWRzLCB5PSB+cHV0X3N5bmNoLCB0eXBlPSBcInNjYXR0ZXJcIiwgbW9kZT0gXCJsaW5lcyttYXJrZXJzXCIpICU+JVxuICBsYXlvdXQodGl0bGU9XCJUZW1wbyBkbyBQdXQgU3luY2hyb25pemVkXCIsIHhheGlzPWxpc3QodGl0bGU9XCJOw7ptZXJvIGRlIFRocmVhZHNcIiksIHlheGlzPSh0aXRsZT1cIlRlbXBvIGdhc3RvXCIpLFxuICAgICAgICAgYmFybW9kZT1cInN0YWNrXCIpXG5gYGAifQ== -->
+<pre class="r"><code>analiseTempoList &lt;- temposList %&gt;%
+  group_by(threads)
+analiseTempoList &lt;- analiseTempoList[order(analiseTempoList$put_synch, decreasing = FALSE)]
+analiseTempoList$indexThreads &lt;- factor(analiseTempoList$threads, levels = analiseTempoList$threads)
+analiseTempoList %&gt;%
+  plot_ly(x= ~indexThreads, y= ~put_synch, type= &quot;scatter&quot;, mode= &quot;lines+markers&quot;) %&gt;%
+  layout(title=&quot;Tempo do Put Synchronized&quot;, xaxis=list(title=&quot;Número de Threads&quot;), yaxis=(title=&quot;Tempo gasto&quot;),
+         barmode=&quot;stack&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6ICQgb3BlcmF0b3IgaXMgaW52YWxpZCBmb3IgYXRvbWljIHZlY3RvcnNcbiJ9 -->
+<pre><code>Error: $ operator is invalid for atomic vectors</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hw6FsaXNlIFRlbXBvcyBRdWVzdMOjbyAwNSIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CgpgYGAKCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hw6FsaXNlIFRlbXBvcyBRdWVzdMOjbyAwNSIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmtuaXRyOjpvcHRzX2NodW5rJHNldCh3YXJuaW5nID0gRkFMU0UpCmxpYnJhcnkoZ2dwbG90MikKbGlicmFyeShwbG90bHkpCmBgYAoKYGBge3J9CnRlbXBvc0xpc3QgPC0gcmVhZC5jc3YoIi9Vc2Vycy9tYXR0aGV1c2JyaXRvL2dpdC9wYXJhZGlnbWEtY29uY29ycmVudGUvcXVlc3RhbzUvdGVtcG9zX2xpc3QuY3N2IikKdGVtcG9zTWFwIDwtIHJlYWQuY3N2KCIvVXNlcnMvbWF0dGhldXNicml0by9naXQvcGFyYWRpZ21hLWNvbmNvcnJlbnRlL3F1ZXN0YW81L3RlbXBvc19tYXAuY3N2IikKbWVkaWFzTGlzdCA8LSByZWFkLmNzdigiL1VzZXJzL21hdHRoZXVzYnJpdG8vZ2l0L3BhcmFkaWdtYS1jb25jb3JyZW50ZS9xdWVzdGFvNS9tZWRpYXNfbGlzdC5jc3YiKQptZWRpYXNNYXAgPC0gcmVhZC5jc3YoIi9Vc2Vycy9tYXR0aGV1c2JyaXRvL2dpdC9wYXJhZGlnbWEtY29uY29ycmVudGUvcXVlc3RhbzUvbWVkaWFzX21hcC5jc3YiKQpgYGAKCgoKYGBge3J9CmFuYWxpc2VUZW1wb0xpc3QgPC0gdGVtcG9zTGlzdCAlPiUKICBncm91cF9ieSh0aHJlYWRzKQoKCgphbmFsaXNlVGVtcG9MaXN0IDwtIGFuYWxpc2VUZW1wb0xpc3Rbb3JkZXIoYW5hbGlzZVRlbXBvTGlzdCRwdXRfc3luY2gsIGRlY3JlYXNpbmcgPSBGQUxTRSldCmFuYWxpc2VUZW1wb0xpc3QkaW5kZXhUaHJlYWRzIDwtIGZhY3RvcihhbmFsaXNlVGVtcG9MaXN0JHRocmVhZHMsIGxldmVscyA9IGFuYWxpc2VUZW1wb0xpc3QkdGhyZWFkcykKCgphbmFsaXNlVGVtcG9MaXN0ICU+JQogIHBsb3RfbHkoeD0gfmluZGV4VGhyZWFkcywgeT0gfnB1dF9zeW5jaCwgdHlwZT0gInNjYXR0ZXIiLCBtb2RlPSAibGluZXMrbWFya2VycyIpICU+JQogIGxheW91dCh0aXRsZT0iVGVtcG8gZG8gUHV0IFN5bmNocm9uaXplZCIsIHhheGlzPWxpc3QodGl0bGU9Ik7Dum1lcm8gZGUgVGhyZWFkcyIpLCB5YXhpcz0odGl0bGU9IlRlbXBvIGdhc3RvIiksCiAgICAgICAgIGJhcm1vZGU9InN0YWNrIikKYGBgCgoKCgoKCg==</div>
 
 
 

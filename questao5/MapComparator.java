@@ -12,22 +12,22 @@ public class MapComparator implements Runnable{
 	
 	
 	public MapComparator(int threadsNumber) {
-		this.size = 150000/threadsNumber;
+		this.size = threadsNumber;
 	}
 	
 	@Override
 	public void run() {
-//		System.out.println("Time of PUT ConcurrentHashMap: " + putConcurrentHashMap());
-//		System.out.println("Time of PUT SynchronizedMap: " + putSynchronizedMap());	
+//		System.out.println(putConcurrentHashMap());
+//		System.out.println(putSynchronizedMap());	
 //		System.out.println("-----------------------------------------");
 //		
-//		System.out.println("Time of GET ConcurrentHashMap: " + getConcurrentHashMap());
-//		System.out.println("Time of GET SynchronizedMap: " + getSynchronizedMap());
+//		System.out.println(getConcurrentHashMap());
+//		System.out.println(getSynchronizedMap());
 //		
 //		System.out.println("-----------------------------------------");
 //		
-//		System.out.println("Time of REMOVE ConcurrentHashMap: " + removeConcurrentHashMap());
-//		System.out.println("Time of REMOVE SynchronizedMap: " + removeSynchronizedMap());
+//		System.out.println(removeConcurrentHashMap());
+		System.out.println(removeSynchronizedMap());
 //		
 //		System.out.println("-----------------------------------------");
 		
