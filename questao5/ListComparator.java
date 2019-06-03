@@ -17,18 +17,18 @@ public class ListComparator implements Runnable{
 
 	@Override
 	public void run() {
-		System.out.println("Time of PUT CopyOnWriteArrayList: " + putCopyOnWriteArrayList());
-//		System.out.println("Time of PUT SynchronizedList: " + putSychronizedList());
+//		System.out.println("Time of PUT CopyOnWriteArrayList: " + putCopyOnWriteArrayList());
+//		System.out.println(putSychronizedList());
 		
 //		System.out.println("-----------------------------------------");
 //		
-//		System.out.println("Time of GET CopyOnWriteArrayList: " + getCopyOnWriteArrayList());
-//		System.out.println("Time of GET SynchronizedList: " + getSynchronizedList());
+//		System.out.println(getCopyOnWriteArrayList());
+//		System.out.println(getSynchronizedList());
 //		
 //		System.out.println("-----------------------------------------");
 //		
-//		System.out.println("Time of REMOVE CopyOnWriteArrayList: " + removeCopyOnWriteArrayList());
-//		System.out.println("Time of REMOVE SynchronizedList: "  + removeSynchronizedList());
+//		System.out.println(removeCopyOnWriteArrayList());
+//		System.out.println(removeSynchronizedList());
 //		
 //		System.out.println("-----------------------------------------");
 		

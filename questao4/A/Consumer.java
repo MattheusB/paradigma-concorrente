@@ -1,42 +1,46 @@
-package questao3B;
+package questao4.A;
 
 public class Consumer implements Runnable{
 	
 	private Data data;
-	private int sum;
-	private int replicas;
+	private int firstValue;
 	
 	public Consumer(Data data) {
 		this.data = data;
-		this.replicas = 0;
 	}
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 			
 		Data data = new Data();
 		Consumer consumer = new Consumer(data);
-		int result = consumer.gateway(4);
-		System.out.println("RESULTADO FINAL: " + result);
+		int result = consumer.gateway(2);
+		System.out.println(result);
 		
 		
 		
 	}
 	
-	public int gateway(int num_replicas) throws InterruptedException {
+	public int gateway(int num_replicas) {
 		synchronized (this.data) {
-			this.replicas = num_replicas;
 			Thread thread = null;
 			for (int i = 0; i < num_replicas; i++) {
 				Producer temp = new Producer(this.data);
 				thread = new Thread(temp);
 				thread.start();
+		}
+			this.data.notifyAll();
+			try {
+				this.data.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		run();
-		return sum;
+		return this.data.getValue();
 	}
 	@Override
 	public void run() {
-		while (data.getCont() < this.replicas) {
+		while (true) {
+			
 			synchronized(this.data) {
 				while (this.data.isEmpty()) {
 					try {
@@ -44,10 +48,11 @@ public class Consumer implements Runnable{
 					} catch (InterruptedException ex) {
 					}
 				}
-				this.sum += this.data.take();
-				System.err.println("Thread: " + Thread.currentThread().getName() + " Valor da soma: " + this.sum);
+				this.firstValue = this.data.take();
+				System.err.println("Primeira Thread foi: " + this.firstValue);
 				this.data.notifyAll();
 			}
+
 		}
 	}	
 	
