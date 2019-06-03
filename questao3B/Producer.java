@@ -19,31 +19,27 @@ public class Producer implements Runnable{
 			this.randomNumber = gerador.nextInt(30) + 1;
 			try {
 				Thread.sleep(this.randomNumber*100);
-				System.out.println("Random num: " + randomNumber);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			this.data.put(this.randomNumber);
-			this.data.notifyAll();
-			
-		}
+			this.data.notify();
+			}
 		return this.randomNumber;
 	}
 
 	@Override
 	public void run() {
-		request();
-		while (true) {
 			synchronized (this.data) {
-				if (!this.data.isEmpty()) {
+				System.out.println("Thread in producer: " + Thread.currentThread().getName());
+				while (!this.data.isEmpty()) {
 					try {
 						this.data.wait();
 					} catch (InterruptedException ex) {
 						System.err.println(ex.getLocalizedMessage());
 					}
-					
 				}
-			}
+				request();
 		}
 	}
 
