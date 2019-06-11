@@ -1,4 +1,6 @@
-package questao5;
+package lista1.questao5;
+
+
 
 import java.io.File;
 import java.io.FileNotFoundException;

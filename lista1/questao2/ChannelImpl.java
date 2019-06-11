@@ -1,4 +1,6 @@
-package questao2;
+package lista1.questao2;
+
+
 
 import java.util.ArrayList;
 

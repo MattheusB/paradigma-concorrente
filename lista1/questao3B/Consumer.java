@@ -1,4 +1,6 @@
-package questao3B;
+package lista1.questao3B;
+
+
 
 public class Consumer implements Runnable{
 	

@@ -1,4 +1,6 @@
-package questao3B;
+package lista1.questao3B;
+
+
 
 public class Data {
 	private int value;

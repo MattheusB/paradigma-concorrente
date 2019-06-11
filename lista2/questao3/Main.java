@@ -1,23 +1,22 @@
-package lista1.questao2;
+package lista2.questao3;
 
 
+import java.util.Random;
 
 
 
 public class Main {
     public static void main(String args[]) throws InterruptedException{
-        Channel channel = new ChannelImpl(10);
-        Producer producer = new Producer(channel);
-        Consumer consumer = new Consumer(channel);
-
-
+        Data data = new Data();
+        Producer producer = new Producer(data);
+        Consumer consumer = new Consumer(data);
+        
         Thread producerThread = new Thread(producer, "producerThread");
         Thread consumerThread = new Thread(consumer, "consumerThread");
-
-
+        
         producerThread.start();
         consumerThread.start();
-
+        
         producerThread.join();
         consumerThread.join();
     }
