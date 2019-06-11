@@ -1,12 +1,10 @@
-package questao3B;
+package questao4.A;
 
 public class Data {
 	private int value;
-	private int cont;
 	
 	public Data() { 
 		this.value = -1;
-		this.cont = 0;
 	}
 	
 	public void put(int value) {
@@ -15,6 +13,7 @@ public class Data {
 					"Nao pode adicionar valores negativos");
 		}
 		this.value = value;
+		System.out.println("Primeiro Valor: " + value);
 	}
 	
 	public int take() {
@@ -30,12 +29,5 @@ public class Data {
 	public int getValue() {
 		return this.value;
 	}
-	
-	public int getCont() {
-		return this.cont;
-	}
-	
-	public void increment() {
-		this.cont += 1;
-	}
+
 }
