@@ -1,4 +1,4 @@
-package lista2.questao3;
+package lista2.questao3.java;
 
 import java.util.Random;
 
