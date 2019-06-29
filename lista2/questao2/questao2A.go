@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-var wait = false
 func gateway(num_replicas int, channel chan int) int{
 
 	for index := 0; index < num_replicas; index++ {
@@ -20,7 +19,7 @@ func request(channel chan int, id int) int{
 	//fmt.Printf("My id: %d, n: %d \n", id, n) //Para visualizar as go routines e os números sorteados
 	time.Sleep(time.Duration(n) * time.Second)
 	endTime := time.Since(startTime)
-	if (endTime > 8*time.Second) {
+	if (endTime > 8*time.Second) { //Demorou mais de 8 sec
 		n = -1
 	} 
 	channel <- n
@@ -40,5 +39,4 @@ func main(){
 	fmt.Scanln(&num_replicas)
 
 	fmt.Println(gateway(num_replicas, channel))
-	wait = true
 }

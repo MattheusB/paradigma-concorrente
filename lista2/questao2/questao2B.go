@@ -15,7 +15,7 @@ func gateway(num_replicas int, channel chan int) int{
 
 	for index := 0; index < num_replicas; index++ {
 		endt := time.Since(start)
-		if (endt >= 16 * time.Second) {
+		if (endt >= 16 * time.Second) { //Se estiver executando depois de 16 sec finaliza
 			return -1
 		}
 
