@@ -9,44 +9,41 @@ public class Producer implements Runnable{
 	private Random gerador;
 	private int randomNumber;
 	private Data data;
+	private int myId;
 	
-	public Producer(Data data) {
+	public Producer(Data data, int id) {
 		this.gerador = new Random();
 		this.randomNumber = 0;
 		this.data = data;
+		this.myId = id;
 	}
 	
 	public int request() {
-		synchronized (this.data) {
-			this.randomNumber = gerador.nextInt(30) + 1;
-			try {
-				Thread.sleep(this.randomNumber);
-				System.out.println("Random num: " + randomNumber);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			this.data.put(this.randomNumber);
-			this.data.notifyAll();
+		this.randomNumber = gerador.nextInt(30) + 1;
+		System.out.println("MY id: "+this.myId+" NUMBER: "+this.randomNumber);
+		try {
+			Thread.sleep(this.randomNumber*100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+		this.data.put(this.randomNumber);
+		this.data.notifyAll();
+	
 		return this.randomNumber;
 	}
 
 	@Override
 	public void run() {
-		while (true) {
-			synchronized (this.data) {
-				if (!this.data.isEmpty()) {
-					try {
-						this.data.wait();
-					} catch (InterruptedException ex) {
-						System.err.println(ex.getLocalizedMessage());
-					}
-					
+		synchronized (this.data) {
+			while(!this.data.isEmpty()) {
+				try {
+					this.data.wait();
+				} catch (InterruptedException ex) {
+					System.err.println(ex.getLocalizedMessage());
 				}
-				request();
-				this.data.notifyAll();
 			}
+			request();
+			this.data.notifyAll();
 		}
 	}
-
 }

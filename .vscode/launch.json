@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "lista1.questao3A.Main",
+            "projectName": "paradigma-concorrente"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Consumer",
+            "request": "launch",
+            "mainClass": "lista1.questao3A.Consumer",
+            "projectName": "paradigma-concorrente"
+        }
+    ]
+}
